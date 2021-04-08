@@ -28,7 +28,7 @@ pipeline {
         stage('Push docker images to registry hub docker') {
             steps {
                 script {
-                    docker.withRegistry("https://registry.hub.docker.com" "credential_abitsugar_docker") {
+                    docker.withRegistry("https://registry.hub.docker.com", "credential_abitsugar_docker") {
                         app.push("${DOCKER_TAG}")
                         app.push("latest")
                     }
