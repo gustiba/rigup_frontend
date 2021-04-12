@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         DOCKER_TAG = getDockerTag()
+        CI = false
     }
 
     stages {
