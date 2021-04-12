@@ -21,6 +21,7 @@ pipeline {
         }
         stage('Build docker images') {
             steps {
+                echo 'Build docker image'
                 script {
                     app = docker.build("jenkins_rigup_frontend")
                 }
@@ -28,6 +29,7 @@ pipeline {
         }
         stage('Push docker images to registry hub docker') {
             steps {
+                echo 'Push docker image'
                 script {
                     docker.withRegistry("https://registry.hub.docker.com", "credential_docker") {
                         app.push("${DOCKER_TAG}")
