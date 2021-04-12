@@ -28,7 +28,7 @@ pipeline {
         stage('Push docker images to registry hub docker') {
             steps {
                 script {
-                    docker.withRegistry("https://registry.hub.docker.com", "credential_abitsugar_docker") {
+                    docker.withRegistry("https://registry.hub.docker.com", "credential_docker") {
                         app.push("${DOCKER_TAG}")
                         app.push("latest")
                     }
@@ -39,7 +39,7 @@ pipeline {
             steps {
                 sh "chmod +x changeTag.sh"
                 sh "./changeTag.sh ${DOCKER_TAG}"
-                withKubeConfig([credentialId: 'credential-kube-fpro', serverUrl: 'https://130.211.245.181']) {
+                withKubeConfig([credentialId: 'credential-kube-config', serverUrl: 'https://130.211.245.181']) {
                     sh 'kubectl apply -f deployment-frontend.k8s.yaml'
                 }
             }
