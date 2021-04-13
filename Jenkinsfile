@@ -41,7 +41,7 @@ pipeline {
         stage('deploy app to kubernetes cluster'){
             steps {
                 sh "chmod +x changeTag.sh"
-                sh "sh changeTag.sh ${DOCKER_TAG}"
+                sh "./changeTag.sh ${DOCKER_TAG}"
                 withKubeConfig([credentialId: 'credential-kube-config', serverUrl: 'https://104.199.234.129']) {
                     sh 'kubectl apply -f deployment-frontend.k8s.yaml'
                 }
