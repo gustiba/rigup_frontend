@@ -23,7 +23,7 @@ pipeline {
             steps {
                 echo 'Build docker image'
                 script {
-                    app = docker.build("jenkins_rigup_frontend")
+                    app = docker.build("abitsugar/jenkins_rigup_frontend")
                 }
             }
         }
