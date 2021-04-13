@@ -31,7 +31,7 @@ pipeline {
             steps {
                 echo 'Push docker image'
                 script {
-                    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'credential_docker', usernameVariable: 'abitsugar', passwordVariable: 'pakyubij!']]) {
+                    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'credential_docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
                         sh "sudo docker login -p $PASSWORD -u $USERNAME registry.address"
                     }
                     docker.withRegistry("https://registry.hub.docker.com", "credential_docker") {
