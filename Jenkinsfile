@@ -31,7 +31,6 @@ pipeline {
             steps {
                 echo 'Push docker image'
                 script {
-                    }
                     docker.withRegistry("https://registry.hub.docker.com", "credential_docker") {
                         app.push("${DOCKER_TAG}")
                         app.push("latest")
