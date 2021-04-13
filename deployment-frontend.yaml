@@ -15,6 +15,6 @@ spec:
         type: frontend
     spec:
       containers:
-      - name: rigup-cont-backend
+      - name: rigup-cont-frontend
         image: abitsugar/rigup_frontend:tagVersion
       - containerPort: 80
